@@ -1,4 +1,5 @@
 import React from 'react';
+import { Element, scroller } from 'react-scroll';
 import styled from 'styled-components';
 
 import Marginer from '../../components/marginer/';
@@ -44,7 +45,13 @@ const DownArrowContainer = styled.div`
 `;
 
 const TopSection = (props) => {
-  return <div>
+
+const scrollToNextSection = () => {
+  scroller.scrollTo("servicesSection", { smooth: true, duration: 1500 });
+}
+
+  return (
+    <Element name="topSection">
     <TopContainer>
       <BackgroundFilter >
       <NavBar />
@@ -55,12 +62,13 @@ const TopSection = (props) => {
         <MotivationalText>From the Best in the Industry</MotivationalText>
         <Marginer direction="vertical" margin="2em" />
         <Button>Start Your Project</Button>
-        <DownArrowContainer>
+        <DownArrowContainer onClick={scrollToNextSection}>
           <DownArrow />
         </DownArrowContainer>
       </BackgroundFilter>
     </TopContainer>
-  </div>
+    </Element>
+  );
 }
 
 export default TopSection
